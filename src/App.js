@@ -45,6 +45,9 @@ export default function App() {
             }
           />
           <label for="first_name">Quantidade de Farinha de Trigo</label>
+          <span class="helper-text" data-error="wrong" data-success="right">
+            Em gramas
+          </span>
         </div>
       </div>
 
