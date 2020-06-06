@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 
+import "materialize-css";
+import "materialize-css/dist/css/materialize.min.css";
+
+import "./styles.scss";
+
+import { Navbar } from "react-materialize";
+
 export default function App() {
   const [ingredients, setIngredients] = useState({
     flour: 400,
@@ -21,27 +28,37 @@ export default function App() {
   }, [calculateIngredients]);
 
   return (
-    <div>
-      <h1>Calculadora Massa de Pizza</h1>
+    <div className="container">
+      <div className="row">
+        <h1>Calculadora Massa de Pizza</h1>
+      </div>
 
-      <h2>Quantidade de Farinha de Trigo</h2>
-      <input
-        type="number"
-        step="10"
-        min="10"
-        value={ingredients.flour}
-        onChange={(event) =>
-          setIngredients({ ...ingredients, flour: event.target.value })
-        }
-      />
+      <div className="row">
+        <div class="input-field col-12">
+          <input
+            type="number"
+            step="10"
+            min="10"
+            value={ingredients.flour}
+            onChange={(event) =>
+              setIngredients({ ...ingredients, flour: event.target.value })
+            }
+          />
+          <label for="first_name">Quantidade de Farinha de Trigo</label>
+        </div>
+      </div>
 
-      <h3>Receita</h3>
-      <ul>
-        <li>Farinha: {ingredients.flour}g</li>
-        <li>Água: {ingredients.water}ml</li>
-        <li>Sal: {ingredients.salt}g</li>
-        <li>Fermento: {ingredients.yeast}g</li>
-      </ul>
+      <div className="row">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <h4>Quantidades</h4>
+          </li>
+          <li class="collection-item">Farinha: {ingredients.flour}g</li>
+          <li class="collection-item">Água: {ingredients.water}ml</li>
+          <li class="collection-item">Sal: {ingredients.salt}g</li>
+          <li class="collection-item">Fermento: {ingredients.yeast}g</li>
+        </ul>
+      </div>
     </div>
   );
 }
